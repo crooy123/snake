@@ -22,10 +22,9 @@ pygame.init()
 pygame.display.set_caption('CrooySnake')
 
 #set frames per second for the game loop
-FPS = 10
-fpsclock = pygame.time.Clock()
-#set block drop rate (number of frames per drop)
+FPS = 7
 moveRate = 2
+fpsclock = pygame.time.Clock()
 pygame.key.set_repeat(10000, 10000)
 
 screenWidth = 900
@@ -271,6 +270,7 @@ while running and isCrash == 0:
     if gridSquareList[snakeList[0][0]][snakeList[0][1]].status == 'mouse':
         snakeList = increaseSnakeSize(snakeList, currentXPos, currentYPos)
         snakeLength = snakeLength + 1
+        FPS = FPS + 1 #make the game quicker
         
         scoreboardScore = fontLarge.render(str(snakeLength), True, (255, 255, 255), (0, 0, 0))
         scoreboard.blit(scoreboardScore, (40,40))
